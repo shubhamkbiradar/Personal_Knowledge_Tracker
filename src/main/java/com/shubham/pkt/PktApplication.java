@@ -2,19 +2,23 @@ package com.shubham.pkt;
 
 import com.shubham.pkt.config.CoreConfig;
 import com.shubham.pkt.service.NoteService;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class PktApplication {
 
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext ctx =
-                new AnnotationConfigApplicationContext(CoreConfig.class);
+        SpringApplication.run(PktApplication.class, args);
 
-        // optional: exercise the graph
-        var service = ctx.getBean(NoteService.class);
-        service.create("first note");
-        service.create("second note");
+        // If you previously used an AnnotationConfigApplicationContext for manual wiring,
+        // that approach does not start an HTTP server. The Spring Boot entrypoint above is required
+        // to auto-configure and start Tomcat + DispatcherServlet.
 
-        ctx.close();
+        // Optional: you can still obtain beans from the ApplicationContext if needed:
+        // var ctx = new AnnotationConfigApplicationContext(CoreConfig.class);
+        // var service = ctx.getBean(NoteService.class);
+        // service.create("first note");
+        // ctx.close();
     }
 }

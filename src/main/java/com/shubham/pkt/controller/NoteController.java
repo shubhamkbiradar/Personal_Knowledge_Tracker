@@ -10,20 +10,8 @@ import java.util.List;
 @RequestMapping("/notes")
 public class NoteController {
 
-    private final NoteService noteService;
-
-    public NoteController(NoteService noteService) {
-        this.noteService = noteService;
+    @GetMapping("/ping")
+    public String ping() {
+        return "ok";
     }
-
-    @PostMapping
-    public Note createNote(@RequestBody String content) {
-        return noteService.create(content);
-    }
-
-    @GetMapping
-    public List<Note> all() {
-        return noteService.findAll();
-    }
-
 }
