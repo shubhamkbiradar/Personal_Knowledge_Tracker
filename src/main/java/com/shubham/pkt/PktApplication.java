@@ -13,6 +13,7 @@ public class PktApplication {
         // optional: exercise the graph
         var service = ctx.getBean(NoteService.class);
         service.create("first note");
+        service.create("second note");
 
         ctx.close();
     }
