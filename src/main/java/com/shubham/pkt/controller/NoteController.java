@@ -3,6 +3,7 @@ package com.shubham.pkt.controller;
 import com.shubham.pkt.dto.CreateNoteRequest;
 import com.shubham.pkt.model.Note;
 import com.shubham.pkt.service.NoteService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class NoteController {
         return "ok";
     }
     @PostMapping
-    public Note createNote(@RequestBody CreateNoteRequest request) {
+    public Note createNote(@Valid @RequestBody CreateNoteRequest request) {
         return noteService.create(request.getContent());
     }
 }
