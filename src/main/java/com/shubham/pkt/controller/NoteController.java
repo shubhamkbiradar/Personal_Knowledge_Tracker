@@ -10,6 +10,17 @@ import java.util.List;
 @RequestMapping("/notes")
 public class NoteController {
 
+    private final NoteService noteService;
+
+    public NoteController(NoteService noteService) {
+        this.noteService = noteService;
+    }
+
+    @GetMapping
+    public List<Note> getAll() {
+        return noteService.findAll();
+    }
+
     @GetMapping("/ping")
     public String ping() {
         return "ok";
