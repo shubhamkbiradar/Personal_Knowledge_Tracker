@@ -1,5 +1,6 @@
 package com.shubham.pkt.controller;
 
+import com.shubham.pkt.dto.CreateNoteRequest;
 import com.shubham.pkt.model.Note;
 import com.shubham.pkt.service.NoteService;
 import org.springframework.web.bind.annotation.*;
@@ -24,5 +25,9 @@ public class NoteController {
     @GetMapping("/ping")
     public String ping() {
         return "ok";
+    }
+    @PostMapping
+    public Note createNote(@RequestBody CreateNoteRequest request) {
+        return noteService.create(request.getContent());
     }
 }
