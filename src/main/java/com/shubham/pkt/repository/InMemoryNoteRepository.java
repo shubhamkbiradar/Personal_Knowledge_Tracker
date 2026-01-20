@@ -33,7 +33,7 @@ public class InMemoryNoteRepository implements NoteRepository {
     public Note update(Long id, String content) {
         Note existing = store.get(id);
         if (existing == null) {
-            throw new NoteNotFoundException("Note not found with id: " + id);
+            throw new NoteNotFoundException(String.valueOf(id));
         }
         Note updated = new Note(id, content);
         store.put(id, updated);
