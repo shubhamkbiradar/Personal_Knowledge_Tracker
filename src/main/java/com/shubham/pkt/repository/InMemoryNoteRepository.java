@@ -1,11 +1,9 @@
 package com.shubham.pkt.repository;
 
+import com.shubham.pkt.exception.NoteNotFoundException;
 import com.shubham.pkt.model.Note;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class InMemoryNoteRepository implements NoteRepository {
@@ -24,5 +22,21 @@ public class InMemoryNoteRepository implements NoteRepository {
     @Override
     public List<Note> findAll() {
         return new ArrayList<>(store.values());
+    }
+
+    @Override
+    public Optional<Note> findById(Long id) {
+        return Optional.ofNullable(store.get(id));
+    }
+
+    @Override
+    public Note update(Long id, String content) {
+        Note existing = store.get(id);
+        if (existing == null) {
+            throw new NoteNotFoundException("Note not found with id: " + id);
+        }
+        Note updated = new Note(id, content);
+        store.put(id, updated);
+        return updated;
     }
 }

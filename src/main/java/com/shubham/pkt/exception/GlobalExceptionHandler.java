@@ -25,4 +25,12 @@ public class GlobalExceptionHandler {
                 "details", errors
         );
     }
+    @ExceptionHandler(NoteNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Map<String, Object> handleNoteNotFound(NoteNotFoundException ex) {
+        return Map.of(
+                "status", HttpStatus.NOT_FOUND.value(),
+                "details", ex.getMessage()
+        );
+    }
 }
