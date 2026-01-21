@@ -43,6 +43,11 @@ public class NoteService {
 
     public Note update(Long id, String content)
     {
+        // existence check (truth ownership)
+        repository.findById(id)
+                .orElseThrow(() -> new NoteNotFoundException(String.valueOf(id)));
+
+        // perform update
         return repository.update(id, content);
     }
 
