@@ -1,4 +1,7 @@
 package com.shubham.pkt.repository;
 
-public class JpaNoteRepository {
+import com.shubham.pkt.model.Note;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface JpaNoteRepository extends JpaRepository<Note, Long> {
 }
