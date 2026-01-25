@@ -1,11 +1,22 @@
 package com.shubham.pkt.model;
 
+
+import jakarta.persistence.*;
+
+@Entity
+
+
+@Table(name = "notes")
 public class Note {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String content;
 
-    public Note() {}
+    protected Note() { }
 
     public Note(Long id, String content) {
         this.id = id;
