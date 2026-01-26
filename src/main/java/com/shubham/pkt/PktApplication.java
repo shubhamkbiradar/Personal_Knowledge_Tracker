@@ -1,7 +1,5 @@
 package com.shubham.pkt;
 
-import com.shubham.pkt.config.CoreConfig;
-import com.shubham.pkt.service.NoteService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

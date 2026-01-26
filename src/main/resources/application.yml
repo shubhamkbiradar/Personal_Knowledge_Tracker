@@ -1,2 +1,5 @@
 storage:
   type: jpa
+spring:
+  jpa:
+    open-in-view: false

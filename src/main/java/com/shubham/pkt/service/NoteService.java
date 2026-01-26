@@ -7,9 +7,9 @@ import com.shubham.pkt.repository.NoteRepository;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 public class NoteService {
 
@@ -25,6 +25,7 @@ public class NoteService {
         this.requestContextProvider = requestContextProvider;
     }
 
+    @Transactional
     public Note create(String content) {
         RequestContext ctx = requestContextProvider.getObject();
         System.out.println("Using RequestContext: " + ctx);
@@ -32,15 +33,18 @@ public class NoteService {
     }
 
 
+    @Transactional (readOnly = true )
     public List<Note> findAll() {
         return repository.findAll();
     }
 
+    @Transactional(readOnly = true )
     public Note findById(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new NoteNotFoundException(String.valueOf(id)));
     }
 
+    @Transactional
     public Note update(Long id, String content)
     {
         // existence check (truth ownership)
