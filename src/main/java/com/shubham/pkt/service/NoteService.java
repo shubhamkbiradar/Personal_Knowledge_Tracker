@@ -15,13 +15,16 @@ public class NoteService {
 
     private final NoteRepository repository;
 
+    private final AuditService auditService;
+
     //private final RequestContext requestContext;
 
     private final ObjectProvider<RequestContext> requestContextProvider;
 
-    public NoteService(NoteRepository repository,
+    public NoteService(NoteRepository repository, AuditService auditService,
                        ObjectProvider<RequestContext> requestContextProvider) {
         this.repository = repository;
+        this.auditService = auditService;
         this.requestContextProvider = requestContextProvider;
     }
 
@@ -30,6 +33,13 @@ public class NoteService {
         RequestContext ctx = requestContextProvider.getObject();
         System.out.println("Using RequestContext: " + ctx);
         return repository.save(new Note(null, content));
+    }
+
+    @Transactional
+    public void createAndAudit(String content) {
+       repository.save(new Note(null, content));
+       auditService.audit(content);
+       throw new RuntimeException(" Failed after Audit ");
     }
 
 

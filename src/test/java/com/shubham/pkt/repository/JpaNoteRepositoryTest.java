@@ -4,16 +4,19 @@ import com.shubham.pkt.model.Note;
 import com.shubham.pkt.repository.JpaNoteRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@DataJpaTest
 public class JpaNoteRepositoryTest {
 
     @Autowired
     private JpaNoteRepository repo;
+
 
     @Test
     void saveAndFind_shouldWork() {

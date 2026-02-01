@@ -5,6 +5,7 @@ import com.shubham.pkt.repository.InMemoryNoteRepository;
 import com.shubham.pkt.repository.JpaNoteRepository;
 import com.shubham.pkt.repository.JpaNoteRepositoryAdapter;
 import com.shubham.pkt.repository.NoteRepository;
+import com.shubham.pkt.service.AuditService;
 import com.shubham.pkt.service.NoteService;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -34,10 +35,16 @@ public class CoreConfig {
     @Bean
     public NoteService noteService(
             NoteRepository repo,
+            AuditService auditService,
             ObjectProvider<RequestContext> provider) {
-        return new NoteService(repo, provider);
+        return new NoteService(repo, auditService, provider);
     }
 
+    @Bean
+    public AuditService auditService()
+    {
+        return new AuditService();
+    }
     @Bean
     @Scope("prototype")
     public RequestContext requestContext() {
