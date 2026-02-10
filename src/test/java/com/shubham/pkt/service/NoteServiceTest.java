@@ -2,7 +2,7 @@ package com.shubham.pkt.service;
 
 import com.shubham.pkt.context.RequestContext;
 import com.shubham.pkt.exception.NoteNotFoundException;
-import com.shubham.pkt.model.Note;
+import com.shubham.pkt.domain.note.Note;
 import com.shubham.pkt.repository.NoteRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

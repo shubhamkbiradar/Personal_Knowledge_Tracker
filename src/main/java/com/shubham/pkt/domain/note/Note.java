@@ -1,11 +1,11 @@
-package com.shubham.pkt.model;
+package com.shubham.pkt.domain.note;
+
+
 
 
 import jakarta.persistence.*;
 
 @Entity
-
-
 @Table(name = "notes")
 public class Note {
 

@@ -1,5 +1,15 @@
 storage:
   type: jpa
 spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
   jpa:
     open-in-view: false
+  datasource:
+    url: jdbc:h2:mem:testdb # Standard in-memory URL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: sa

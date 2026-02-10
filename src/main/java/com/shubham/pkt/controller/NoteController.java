@@ -1,7 +1,7 @@
 package com.shubham.pkt.controller;
 
 import com.shubham.pkt.dto.CreateNoteRequest;
-import com.shubham.pkt.model.Note;
+import com.shubham.pkt.domain.note.Note;
 import com.shubham.pkt.service.NoteService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

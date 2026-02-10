@@ -1,6 +1,6 @@
 package com.shubham.pkt.repository;
 
-import com.shubham.pkt.model.Note;
+import com.shubham.pkt.domain.note.Note;
 import com.shubham.pkt.repository.JpaNoteRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

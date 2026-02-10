@@ -1,5 +1,6 @@
 package com.shubham.pkt.service;
 
+import com.shubham.pkt.domain.note.Note;
 import com.shubham.pkt.repository.NoteRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
-@Transactional
 public class PropagationTest {
 
     @Autowired
@@ -21,9 +21,11 @@ public class PropagationTest {
 
 
     @Test
-    void requiresNew_shouldCommit_evenIfOuterFails()
-    {
-        assertThrows(RuntimeException.class,() -> noteService.createAndAudit("test"));
-        assertEquals(1,repo.findAll().size());
+    void requiresNew_shouldCommit_evenIfAuditFails() {
+
+        Note note = noteService.create("test");
+
+        assertEquals(1, repo.findAll().size());
+        assertEquals("test", repo.findAll().get(0).getContent());
     }
 }

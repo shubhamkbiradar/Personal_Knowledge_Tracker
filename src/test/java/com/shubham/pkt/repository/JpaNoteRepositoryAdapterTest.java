@@ -2,7 +2,7 @@ package com.shubham.pkt.repository;
 
 
 import com.shubham.pkt.exception.NoteNotFoundException;
-import com.shubham.pkt.model.Note;
+import com.shubham.pkt.domain.note.Note;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

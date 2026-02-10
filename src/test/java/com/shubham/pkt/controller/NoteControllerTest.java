@@ -1,7 +1,7 @@
 package com.shubham.pkt.controller;
 
 import com.shubham.pkt.exception.NoteNotFoundException;
-import com.shubham.pkt.model.Note;
+import com.shubham.pkt.domain.note.Note;
 import com.shubham.pkt.service.NoteService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -41,11 +41,6 @@ public class CoreConfig {
     }
 
     @Bean
-    public AuditService auditService()
-    {
-        return new AuditService();
-    }
-    @Bean
     @Scope("prototype")
     public RequestContext requestContext() {
         return new RequestContext();

@@ -1,7 +1,7 @@
 package com.shubham.pkt.repository;
 
 import com.shubham.pkt.exception.NoteNotFoundException;
-import com.shubham.pkt.model.Note;
+import com.shubham.pkt.domain.note.Note;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
